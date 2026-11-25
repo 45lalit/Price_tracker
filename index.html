@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Taker — Expense Workspace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- 1. AUTHENTICATION VIEW -->
+    <div class="auth-card" id="authCard">
+        <div class="brand-badge">
+            <span class="dot"></span> Price Taker
+        </div>
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to access your synced expense ledger.</p>
+
+        <div class="form-stack">
+            <div class="input-group">
+                <label for="authEmail">Email address</label>
+                <input 
+                    type="email" 
+                    id="authEmail" 
+                    placeholder="name@domain.com"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="authPassword">Password</label>
+                <input 
+                    type="password" 
+                    id="authPassword" 
+                    placeholder="••••••••"
+                >
+            </div>
+
+            <div class="auth-actions">
+                <button type="button" id="loginBtn" class="btn-primary">Sign In</button>
+                <button type="button" id="signupBtn" class="btn-secondary">Create New Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. DASHBOARD WORKSPACE VIEW -->
+    <div class="dashboard-card" id="trackerCard" style="display: none;">
+        
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="brand-title">
+                <span class="logo-mark">₹</span>
+                <div>
+                    <h2>Price Taker</h2>
+                    <span id="userEmail" class="user-pill"></span>
+                </div>
+            </div>
+            <button type="button" id="logoutBtn" class="btn-ghost">Sign out</button>
+        </header>
+
+        <!-- Summary Metric Banner -->
+        <div class="metric-box">
+            <span class="metric-label">Total Outflow</span>
+            <div class="metric-value" id="totalAmount">$0</div>
+        </div>
+
+        <!-- Compact Add Expense Form -->
+        <form id="expenseForm" class="expense-form">
+            <div class="form-row">
+                <div class="input-group flex-2">
+                    <label for="expenseName">Description</label>
+                    <input
+                        type="text"
+                        id="expenseName"
+                        placeholder="e.g., AWS Hosting, Coffee, Books"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="input-group flex-1">
+                    <label for="expenseAmount">Amount ($)</label>
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        placeholder="0.00"
+                        min="0"
+                        step="any"
+                    >
+                </div>
+            </div>
+
+            <button type="submit" id="addExpenseBtn" class="btn-primary">
+                Add Transaction
+            </button>
+        </form>
+
+        <!-- Transactions List -->
+        <div class="ledger-section">
+            <div class="ledger-header">
+                <h3>Recent Transactions</h3>
+                <span class="live-indicator"><span class="pulse"></span> Live Sync</span>
+            </div>
+
+            <div id="expenseList" class="expense-list">
+                <!-- Items rendered dynamically by script.js -->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
